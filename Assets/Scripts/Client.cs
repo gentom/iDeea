@@ -5,9 +5,24 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class Client : MonoBehaviour
 {
+	string[] words = {
+		"a",
+		"b",
+		"c",
+		"d",
+		"e",
+		"f",
+		"g",
+		"h",
+		"i",
+		"j",
+	};
+
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +34,11 @@ public class Client : MonoBehaviour
 	void Update ()
 	{
 		
+	}
+
+	public string[] GetWords()
+	{
+		return words;
 	}
 
 }

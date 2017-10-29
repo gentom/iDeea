@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
 	[SerializeField] InputField inputField;
-	[SerializeField] BubbleCreator bubbleCreator;
+	[SerializeField] BubbleController bubbleController;
 
 	public void InputLogger()
 	{
-		bubbleCreator.InputText (inputField.text);
+		bubbleController.DefineWord (inputField.text);
 	}
 }
