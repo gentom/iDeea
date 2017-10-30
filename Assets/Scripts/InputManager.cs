@@ -8,8 +8,8 @@ public class InputManager : MonoBehaviour
 	[SerializeField] InputField inputField;
 	[SerializeField] BubbleController bubbleController;
 
-	public void InputLogger()
+	public void InputLogger ()
 	{
-		bubbleController.DefineWord (inputField.text);
+		bubbleController.SendWord (inputField.text, Vector3.zero);
 	}
 }

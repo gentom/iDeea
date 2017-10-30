@@ -8,8 +8,12 @@ using System.Threading;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
+
 public class Client : MonoBehaviour
 {
+
+	string URL = "http://localhost:8000/server.py";
+
 	// Test
 	string[] words = {
 		"a",
@@ -37,9 +41,30 @@ public class Client : MonoBehaviour
 		
 	}
 
-	public string[] GetWords ()
+
+	public void GetWords (string word)
 	{
-		return words;
+		StartCoroutine (Post (word));
+	}
+
+	private IEnumerator Post (string word)
+	{
+		WWWForm form = new WWWForm ();
+		form.AddField ("word", word);
+		UnityWebRequest request = UnityWebRequest.Post (URL, form);
+
+		// リクエスト送信
+		yield return request.Send ();
+
+		if (request.isNetworkError) {
+			Debug.Log ("エラー:" + request.error);
+		} else {
+			if (request.responseCode == 204) {
+				Debug.Log ("せいこう！");
+			} else {
+				Debug.Log ("しっぱい…:" + request.responseCode);
+			}
+		}
 	}
 
 }
