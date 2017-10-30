@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // 追加
+using UnityEngine.UI;
 
-public class Bubble : MonoBehaviour {
+public class Bubble : MonoBehaviour
+{
 
 	const float waitTime = 0.2f;
 
@@ -38,10 +39,10 @@ public class Bubble : MonoBehaviour {
 
 	public void AddForce (Vector3 vector)
 	{
-		body.AddForce(vector * 0.5f);
+		body.AddForce (vector * 0.5f);
 	}
 
-	void GenerateRelatedBubbles () 
+	void GenerateRelatedBubbles ()
 	{
 		bubbleController.DefineWord (textMesh.text, transform.position);
 		Destroy (gameObject);
@@ -84,7 +85,7 @@ public class Bubble : MonoBehaviour {
 		if (time < waitTime) {
 			GenerateRelatedBubbles ();
 		} else {
-			AddForce(new Vector3(transform.position.x - startPos.x, transform.position.y - startPos.y, 0f));
+			AddForce (new Vector3 (transform.position.x - startPos.x, transform.position.y - startPos.y, 0f));
 		}
 		time = 0;
 	}
@@ -96,7 +97,7 @@ public class Bubble : MonoBehaviour {
 		if (x * x + y * y < 0.05f && onTouch) {
 			Fusion (other.gameObject);
 		} else {
-			AddForce(new Vector3(x, y, 0f));
+			AddForce (new Vector3 (x + 0.5f, y + 0.2f, 0f));
 		}
 	}
 }

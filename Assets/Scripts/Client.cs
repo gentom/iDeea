@@ -10,6 +10,7 @@ using UnityEngine.Networking;
 
 public class Client : MonoBehaviour
 {
+	// Test
 	string[] words = {
 		"a",
 		"b",
@@ -36,7 +37,7 @@ public class Client : MonoBehaviour
 		
 	}
 
-	public string[] GetWords()
+	public string[] GetWords ()
 	{
 		return words;
 	}
