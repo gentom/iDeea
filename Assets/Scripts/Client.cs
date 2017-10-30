@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 public class Client : MonoBehaviour
 {
 
-	string URL = "http://localhost:8000/server.py";
+	string URL = "http://localhost:8000/";
 
 	// Test
 	string[] words = {
@@ -42,6 +42,12 @@ public class Client : MonoBehaviour
 	}
 
 
+	public string[] GetWords ()
+	{
+		return words;
+	}
+
+
 	public void GetWords (string word)
 	{
 		StartCoroutine (Post (word));
@@ -57,12 +63,12 @@ public class Client : MonoBehaviour
 		yield return request.Send ();
 
 		if (request.isNetworkError) {
-			Debug.Log ("エラー:" + request.error);
+			Debug.Log ("Error:" + request.error);
 		} else {
 			if (request.responseCode == 204) {
-				Debug.Log ("せいこう！");
+				Debug.Log ("Success :D");
 			} else {
-				Debug.Log ("しっぱい…:" + request.responseCode);
+				Debug.Log ("Failed ;( :" + request.responseCode);
 			}
 		}
 	}
