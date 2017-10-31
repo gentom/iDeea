@@ -57,7 +57,6 @@ public class Client : MonoBehaviour
 	{
 		WWWForm form = new WWWForm ();
 		form.AddField ("word", word);
-		Debug.Log (form);
 		UnityWebRequest request = UnityWebRequest.Post (URL, form);
 
 		// リクエスト送信
@@ -67,6 +66,16 @@ public class Client : MonoBehaviour
 			Debug.Log ("Error:" + request.error);
 		} else {
 			if (request.responseCode == 200) {
+				string w = request.downloadHandler.text;
+				Debug.Log (w);
+				char[] removeChars = new char[] { '[', ']', '"' };
+				foreach (char c in removeChars) {
+					w = w.Replace (c.ToString (), "");
+				}
+				string[] wlist = w.Split (',');
+				for (int i = 0; i < 10; i++) {
+					Debug.Log (wlist [i]);
+				}
 				Debug.Log ("Success :D");
 			} else {
 				Debug.Log ("Failed ;( :" + request.responseCode);
