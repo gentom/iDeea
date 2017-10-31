@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 public class Client : MonoBehaviour
 {
 
-	string URL = "http://localhost:8000/";
+	string URL = "http://127.0.0.1:8000/";
 
 	// Test
 	string[] words = {
@@ -57,6 +57,7 @@ public class Client : MonoBehaviour
 	{
 		WWWForm form = new WWWForm ();
 		form.AddField ("word", word);
+		Debug.Log (form);
 		UnityWebRequest request = UnityWebRequest.Post (URL, form);
 
 		// リクエスト送信
@@ -65,7 +66,7 @@ public class Client : MonoBehaviour
 		if (request.isNetworkError) {
 			Debug.Log ("Error:" + request.error);
 		} else {
-			if (request.responseCode == 204) {
+			if (request.responseCode == 200) {
 				Debug.Log ("Success :D");
 			} else {
 				Debug.Log ("Failed ;( :" + request.responseCode);

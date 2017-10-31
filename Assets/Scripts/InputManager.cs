@@ -10,7 +10,8 @@ public class InputManager : MonoBehaviour
 
 	public void InputLogger ()
 	{
-		//bubbleController.SendWord (inputField.text, Vector3.zero); 本番用
-		bubbleController.DefineWord (inputField.text); //モック
+		string word = inputField.text;
+		bubbleController.SendWord (word, Vector3.zero); //本番
+		//bubbleController.DefineWord (word); //モック
 	}
 }
