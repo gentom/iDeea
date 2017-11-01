@@ -11,6 +11,8 @@ public class Bubble : MonoBehaviour
 
 	const float waitTime = 0.2f;
 
+	[SerializeField] Client client;
+
 	[SerializeField] Rigidbody2D body;
 	public TextMesh textMesh;
 	BubbleController bubbleController;
@@ -48,7 +50,10 @@ public class Bubble : MonoBehaviour
 	void GenerateRelatedBubbles ()
 	{
 		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
-		bubbleController.DefineWord (textMesh.text, transform.position);
+		//bubbleController.DefineWord (textMesh.text, transform.position); //ここはClientに渡すように書き換え
+		string w = textMesh.text;
+		Debug.Log (w);
+		bubbleController.SendWord (w, transform.position);
 		this.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		textMesh.gameObject.SetActive (false);
 		Invoke ("BubbleDestroy", 0.7f);

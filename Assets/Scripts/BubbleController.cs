@@ -24,25 +24,14 @@ public class BubbleController : MonoBehaviour
 	public void SendWord (string word, Vector3 p)
 	{
 		pos = p;
-		client.GetWords (word);
+		client.GetWords (word, p);
 	}
 
-	// From InputField
-	public void DefineWord (string[] words)
+	public void DefineWord (string[] words, Vector3 p)
 	{
-		// ここでClientにwordを渡す
 
 
-		bubbleGenerator.GenerateBubbles (words, Vector3.zero);
-	}
-
-
-	public void DefineWord (string word, Vector3 pos)
-	{
-		// ここでClientにwordを渡す
-
-
-		bubbleGenerator.GenerateBubbles (client.GetWords (), pos);
+		bubbleGenerator.GenerateBubbles (words, p);
 	}
 
 }

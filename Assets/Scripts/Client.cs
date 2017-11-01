@@ -44,19 +44,12 @@ public class Client : MonoBehaviour
 	}
 
 
-	public string[] GetWords ()
+	public void GetWords (string word, Vector3 pos)
 	{
-		//return words;
-		return resultList;
+		StartCoroutine (Post (word, pos));
 	}
 
-
-	public void GetWords (string word)
-	{
-		StartCoroutine (Post (word));
-	}
-
-	private IEnumerator Post (string word)
+	private IEnumerator Post (string word, Vector3 pos)
 	{
 		WWWForm form = new WWWForm ();
 		form.AddField ("word", word);
@@ -72,7 +65,7 @@ public class Client : MonoBehaviour
 				// Get Data from Python Server
 				string w = request.downloadHandler.text;
 				Debug.Log (w);
-				char[] removeChars = new char[] { '[', ']', '"' };
+				char[] removeChars = new char[] { '[', ']', '"', ' ' };
 				foreach (char c in removeChars) {
 					w = w.Replace (c.ToString (), "");
 				}
@@ -80,7 +73,7 @@ public class Client : MonoBehaviour
 				for (int i = 0; i < 10; i++) {
 					Debug.Log (resultList [i]);
 				}
-				bubbleController.DefineWord (resultList);
+				bubbleController.DefineWord (resultList, pos);
 				Debug.Log ("Success :D");
 			} else {
 				Debug.Log ("Failed ;( :" + request.responseCode);
