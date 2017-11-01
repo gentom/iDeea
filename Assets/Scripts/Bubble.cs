@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent (typeof(AudioSource))]
 public class Bubble : MonoBehaviour
 {
+
+	public AudioClip bubbleSE;
 
 	const float waitTime = 0.2f;
 
@@ -44,12 +47,21 @@ public class Bubble : MonoBehaviour
 
 	void GenerateRelatedBubbles ()
 	{
+		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
 		bubbleController.DefineWord (textMesh.text, transform.position);
+		this.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		textMesh.gameObject.SetActive (false);
+		Invoke ("BubbleDestroy", 0.7f);
+	}
+
+	void BubbleDestroy ()
+	{
 		Destroy (gameObject);
 	}
 
 	void Fusion (GameObject other)
 	{
+		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
 		textMesh.text += other.GetComponent<Bubble> ().textMesh.text;
 		Destroy (other);
 	}

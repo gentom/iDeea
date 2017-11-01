@@ -66,6 +66,7 @@ public class Client : MonoBehaviour
 			Debug.Log ("Error:" + request.error);
 		} else {
 			if (request.responseCode == 200) {
+				// Get Data from Python Server
 				string w = request.downloadHandler.text;
 				Debug.Log (w);
 				char[] removeChars = new char[] { '[', ']', '"' };

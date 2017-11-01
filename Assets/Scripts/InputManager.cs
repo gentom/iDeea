@@ -12,6 +12,6 @@ public class InputManager : MonoBehaviour
 	{
 		string word = inputField.text;
 		bubbleController.SendWord (word, Vector3.zero); //本番
-		//bubbleController.DefineWord (word); //モック
+		//bubbleController.DefineWord (word); //For Demo
 	}
 }
