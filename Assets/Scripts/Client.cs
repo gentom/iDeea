@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 
 public class Client : MonoBehaviour
 {
-
+	[SerializeField] BubbleController bubbleController;
 	string URL = "http://127.0.0.1:8000/";
 
 	// Test
@@ -27,6 +27,8 @@ public class Client : MonoBehaviour
 		"i",
 		"j",
 	};
+
+	string[] resultList;
 
 
 	// Use this for initialization
@@ -44,7 +46,8 @@ public class Client : MonoBehaviour
 
 	public string[] GetWords ()
 	{
-		return words;
+		//return words;
+		return resultList;
 	}
 
 
@@ -73,10 +76,11 @@ public class Client : MonoBehaviour
 				foreach (char c in removeChars) {
 					w = w.Replace (c.ToString (), "");
 				}
-				string[] wlist = w.Split (',');
+				resultList = w.Split (',');
 				for (int i = 0; i < 10; i++) {
-					Debug.Log (wlist [i]);
+					Debug.Log (resultList [i]);
 				}
+				bubbleController.DefineWord (resultList);
 				Debug.Log ("Success :D");
 			} else {
 				Debug.Log ("Failed ;( :" + request.responseCode);

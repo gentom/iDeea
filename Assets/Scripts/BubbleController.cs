@@ -28,15 +28,15 @@ public class BubbleController : MonoBehaviour
 	}
 
 	// From InputField
-	public void DefineWord (string word)
+	public void DefineWord (string[] words)
 	{
 		// ここでClientにwordを渡す
 
 
-		bubbleGenerator.GenerateBubbles (client.GetWords (), Vector3.zero);
+		bubbleGenerator.GenerateBubbles (words, Vector3.zero);
 	}
 
-	// From Taped Bubble
+
 	public void DefineWord (string word, Vector3 pos)
 	{
 		// ここでClientにwordを渡す
