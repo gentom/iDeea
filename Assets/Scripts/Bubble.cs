@@ -50,7 +50,6 @@ public class Bubble : MonoBehaviour
 	void GenerateRelatedBubbles ()
 	{
 		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
-		//bubbleController.DefineWord (textMesh.text, transform.position); //ここはClientに渡すように書き換え
 		string w = textMesh.text;
 		Debug.Log (w);
 		bubbleController.SendWord (w, transform.position);

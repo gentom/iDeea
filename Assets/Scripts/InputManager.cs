@@ -11,7 +11,11 @@ public class InputManager : MonoBehaviour
 	public void InputLogger ()
 	{
 		string word = inputField.text;
-		bubbleController.SendWord (word, Vector3.zero); //本番
-		//bubbleController.DefineWord (word); //For Demo
+		if (string.IsNullOrEmpty (word)) {
+			Debug.Log ("You can't send Null or Empty word");
+		} else {
+			bubbleController.SendWord (word, Vector3.zero); //本番
+			//bubbleController.DefineWord (word); //For Demo
+		}
 	}
 }

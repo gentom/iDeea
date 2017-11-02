@@ -14,20 +14,6 @@ public class Client : MonoBehaviour
 	[SerializeField] BubbleController bubbleController;
 	string URL = "http://127.0.0.1:8000/";
 
-	// Test
-	string[] words = {
-		"a",
-		"b",
-		"c",
-		"d",
-		"e",
-		"f",
-		"g",
-		"h",
-		"i",
-		"j",
-	};
-
 	string[] resultList;
 
 
