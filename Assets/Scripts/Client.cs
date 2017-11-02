@@ -30,17 +30,17 @@ public class Client : MonoBehaviour
 	}
 
 
+	public void OldGetWords (string word, Vector3 pos)
+	{
+		StartCoroutine (OldPost (word, pos));
+	}
+
 	public void GetWords (string word, Vector3 pos)
 	{
 		StartCoroutine (Post (word, pos));
 	}
 
-	public void GetWords2 (string word, Vector3 pos)
-	{
-		StartCoroutine (Post2 (word, pos));
-	}
-
-	private IEnumerator Post (string word, Vector3 pos)
+	private IEnumerator OldPost (string word, Vector3 pos)
 	{
 		WWWForm form = new WWWForm ();
 		form.AddField ("word", word);
@@ -72,11 +72,11 @@ public class Client : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Post2 (string word, Vector3 pos)
+	private IEnumerator Post (string word, Vector3 pos)
 	{
 		WWWForm form = new WWWForm ();
 		form.AddField ("word", word);
-		UnityWebRequest request = UnityWebRequest.Post ("http://127.0.0.1:8000/merge", form);
+		UnityWebRequest request = UnityWebRequest.Post (URL, form);
 
 		// リクエスト送信
 		yield return request.Send ();

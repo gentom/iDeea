@@ -52,7 +52,7 @@ public class Bubble : MonoBehaviour
 		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
 		string w = textMesh.text;
 		Debug.Log (w);
-		bubbleController.SendWord2 (w, transform.position);
+		bubbleController.SendWord (w, transform.position);
 		this.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		textMesh.gameObject.SetActive (false);
 		Invoke ("BubbleDestroy", 0.7f);
@@ -63,7 +63,7 @@ public class Bubble : MonoBehaviour
 		Destroy (gameObject);
 	}
 
-	void Fusion (GameObject other)
+	void Merge (GameObject other)
 	{
 		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
 		textMesh.text += other.GetComponent<Bubble> ().textMesh.text;
@@ -111,7 +111,7 @@ public class Bubble : MonoBehaviour
 		float x = transform.position.x - other.transform.position.x;
 		float y = transform.position.y - other.transform.position.y;
 		if (x * x + y * y < 0.05f && onTouch) {
-			Fusion (other.gameObject);
+			Merge (other.gameObject);
 		} else {
 			AddForce (new Vector3 (x, y, 0f));
 		}

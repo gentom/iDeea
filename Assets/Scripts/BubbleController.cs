@@ -24,13 +24,13 @@ public class BubbleController : MonoBehaviour
 	public void SendWord (string word, Vector3 p)
 	{
 		pos = p;
-		client.GetWords2 (word, p);
+		client.GetWords (word, p);
 	}
 
 	public void SendWord2 (string word, Vector3 p)
 	{
 		pos = p;
-		client.GetWords2 (word, p);
+		client.GetWords (word, p);
 	}
 
 	public void DefineWord (string[] words, Vector3 p)
