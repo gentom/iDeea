@@ -52,7 +52,7 @@ public class Bubble : MonoBehaviour
 		GetComponent<AudioSource> ().PlayOneShot (bubbleSE);
 		string w = textMesh.text;
 		Debug.Log (w);
-		bubbleController.SendWord (w, transform.position);
+		bubbleController.SendWord2 (w, transform.position);
 		this.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		textMesh.gameObject.SetActive (false);
 		Invoke ("BubbleDestroy", 0.7f);
@@ -113,7 +113,7 @@ public class Bubble : MonoBehaviour
 		if (x * x + y * y < 0.05f && onTouch) {
 			Fusion (other.gameObject);
 		} else {
-			AddForce (new Vector3 (x + 0.5f, y + 0.2f, 0f));
+			AddForce (new Vector3 (x, y, 0f));
 		}
 	}
 }
