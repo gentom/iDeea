@@ -14,12 +14,6 @@ public class BubbleController : MonoBehaviour
 	{
 		bubbleGenerator = GetComponent<BubbleGenerator> ();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
 
 	public void SendWord (string word, Vector3 p)
 	{
@@ -29,8 +23,6 @@ public class BubbleController : MonoBehaviour
 
 	public void DefineWord (string[] words, Vector3 p)
 	{
-
-
 		bubbleGenerator.GenerateBubbles (words, p);
 	}
 
