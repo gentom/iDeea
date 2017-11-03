@@ -16,20 +16,6 @@ public class Client : MonoBehaviour
 
 	string[] resultList;
 
-
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
-
-
 	public void GetWords (string word, Vector3 pos)
 	{
 		StartCoroutine (Post (word, pos));
